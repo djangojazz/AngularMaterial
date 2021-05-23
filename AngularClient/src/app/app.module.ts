@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { EntryComponent } from './Entry/Entry.component';
 import { WelcomeComponent } from './Welcome/Welcome.component';
-import { TestService } from './Test.service';
+import { TestService } from './test.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [			
@@ -18,7 +19,8 @@ import { TestService } from './Test.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [TestService],
   bootstrap: [AppComponent]
