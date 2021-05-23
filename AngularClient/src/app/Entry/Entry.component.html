@@ -1,7 +1,9 @@
 <div *ngIf="combined$ | async as combined; else loading">
   Data loaded
-  {{combined[0]}}
-  {{combined[1]}}
+  <p>
+    <em>{{combined[0] | json}}</em>
+  </p>
+  <em>{{combined[1] | json}}</em>
 </div>
 <ng-template #loading>
   <mat-spinner></mat-spinner>
