@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Entry } from '../Models/entry.model';
+import { TestService } from '../Test.service';
 
 @Component({
   selector: 'app-Entry',
@@ -6,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./Entry.component.scss']
 })
 export class EntryComponent implements OnInit {
+  entry$: Observable<Entry> = this.service.getItem();
 
-  constructor() { }
+  constructor(private readonly service: TestService) { }
 
   ngOnInit() {
   }

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { EntryComponent } from './Entry/Entry.component';
 import { WelcomeComponent } from './Welcome/Welcome.component';
+import { TestService } from './Test.service';
 
 @NgModule({
   declarations: [			
@@ -19,7 +20,7 @@ import { WelcomeComponent } from './Welcome/Welcome.component';
     BrowserModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
