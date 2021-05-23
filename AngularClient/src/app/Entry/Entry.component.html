@@ -1,7 +1,8 @@
-<mat-spinner [hidden]="loading$ | async"></mat-spinner>
-<p>
-  <em>{{entry$ | async | json}}</em>
-</p>
-<p>
-  <em>{{entry2$ | async | json}}</em>
-</p>
+<div *ngIf="combined$ | async as combined; else loading">
+  Data loaded
+  {{combined[0]}}
+  {{combined[1]}}
+</div>
+<ng-template #loading>
+  <mat-spinner></mat-spinner>
+</ng-template>
