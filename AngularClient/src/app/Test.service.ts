@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵɵtrustConstantResourceUrl } from '@angular/core';
 import { Observable, of, timer } from 'rxjs';
 import { Entry } from './Models/entry.model';
 
@@ -10,8 +10,7 @@ export class TestService {
 constructor() { }
 
   public getItem(): Observable<Entry> {
-    timer(2000);
-    return of({ id: 1, desc: 'test'});
+    return timer(2000).pipe(map => of({ id: 1, desc: 'test'}));
   }
 
 }
