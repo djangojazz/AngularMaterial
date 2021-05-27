@@ -1,0 +1,38 @@
+.container {
+    align-items: baseline;
+    display: grid;
+    grid-template-areas:
+        "id idVal desc descval"
+        "notes notesVal . .";
+    grid-template-rows: 30px 30px;
+    grid-template-columns: 142px 299px 93px 232px;
+    font-size: 14px;
+  }
+
+.idh {
+    grid-area: id;
+}
+
+.id {
+    grid-area: idVal;
+}
+
+.desch {
+    grid-area: desc;
+}
+
+.desc {
+    grid-area: descval;
+}
+
+.notesh {
+    grid-area: notes;
+}
+
+.notes {
+    grid-area: notesVal;
+}
+
+span {
+    color: rgb(49, 71, 129);
+}

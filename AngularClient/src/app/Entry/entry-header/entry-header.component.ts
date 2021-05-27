@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Entry } from 'src/app/Models/entry.model';
 
 @Component({
   selector: 'entry-header',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entry-header.component.scss']
 })
 export class EntryHeaderComponent implements OnInit {
+  @Input() item: Entry = { id: 0, desc: ''};
 
   constructor() { }
 
