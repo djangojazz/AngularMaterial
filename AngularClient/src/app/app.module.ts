@@ -8,12 +8,14 @@ import { EntryComponent } from './Entry/Entry.component';
 import { WelcomeComponent } from './Welcome/Welcome.component';
 import { TestService } from './test.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EntryHeaderComponent } from './Entry/entry-header/entry-header.component';
 
 @NgModule({
   declarations: [			
     AppComponent,
     EntryComponent,
-      WelcomeComponent
+    EntryHeaderComponent,
+    WelcomeComponent
    ],
   imports: [
     AppRoutingModule,
