@@ -2,11 +2,12 @@
     align-items: baseline;
     display: grid;
     grid-template-areas:
-        "id idVal desc descval"
-        "notes notesVal . .";
-    grid-template-rows: 30px 30px;
-    grid-template-columns: 142px 299px 93px 232px;
+        "id idVal"
+        "desc descval"
+        "notes notesVal";
+    grid-template-columns: 50px 400px;
     font-size: 14px;
+    width: 50%;
   }
 
 .idh {
@@ -23,6 +24,10 @@
 
 .desc {
     grid-area: descval;
+    flex-grow: unset;
+    background: blue;
+    flex-flow: wrap;
+    align-content: stretch;
 }
 
 .notesh {

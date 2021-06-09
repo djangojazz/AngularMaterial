@@ -9,13 +9,15 @@ import { WelcomeComponent } from './Welcome/Welcome.component';
 import { TestService } from './test.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EntryHeaderComponent } from './Entry/entry-header/entry-header.component';
+import { MaterialTableComponent } from './Material-Table/Material-Table.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     EntryComponent,
     EntryHeaderComponent,
-    WelcomeComponent
+    WelcomeComponent,
+      MaterialTableComponent
    ],
   imports: [
     AppRoutingModule,

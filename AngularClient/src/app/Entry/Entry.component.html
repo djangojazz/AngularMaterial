@@ -1,8 +1,4 @@
 <div *ngIf="combined$ | async as combined; else loading">
-  Data loaded
-  <p>
-    <em>{{combined.val1 | json}}</em>
-  </p>
   <entry-header [item]="combined.val2"></entry-header>
 </div>
 <ng-template #loading>
