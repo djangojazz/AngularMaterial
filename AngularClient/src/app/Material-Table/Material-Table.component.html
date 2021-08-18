@@ -1,51 +1,88 @@
 <mat-card>
-<table mat-table [dataSource]="rules" multiTemplateDataRows >
-  <ng-container matColumnDef="review">
-    <th mat-header-cell *matHeaderCellDef>NC Review </th>
-    <td mat-cell *matCellDef="let x">
-        <div *ngIf="x.isApproved==null">
-            <span class="material-icons">thumb_up_off_alt</span>
-            <span class="material-icons">thumb_down_off_alt</span>
-          </div>
-    </td>
-  </ng-container>
+  <table aria-label="Authorization Results" mat-table #table [dataSource]="rules" multiTemplateDataRows>
+            <ng-container matColumnDef="review">
+                <th scope="row" mat-header-cell *matHeaderCellDef>NC Review</th>
+                <td mat-cell *matCellDef="let rule">
+                    <ng-template [ngIf]="rule.isApproved">
+                        <button mat-flat-button class="largerButton">
+                          <span class="material-icons">thumb_up_off_alt</span>APPROVED
+                        </button>
+                    </ng-template>
+                    <ng-template [ngIf]="rule.isApproved===null">
+                        <button mat-flat-button class="toolbar-button mat-raised-button largerButton">APPROVE
+                        </button>
+                    </ng-template>
+                </td>
+            </ng-container>
 
-  <ng-container matColumnDef="ruleName">
-    <th mat-header-cell *matHeaderCellDef>ruleName </th>
-    <td mat-cell *matCellDef="let x">{{x.ruleName}}</td>
-  </ng-container>
+            <ng-container matColumnDef="ruleName">
+                <th scope="row" mat-header-cell *matHeaderCellDef>Required Approvals</th>
+                <td mat-cell *matCellDef="let rule" (click)="expandedElement = expandedElement === rule ? null : rule">{{rule.ruleName}}</td>
+            </ng-container>
 
-  <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef>title </th>
-    <td mat-cell *matCellDef="let x">{{x.title}}</td>
-  </ng-container>
+            <ng-container matColumnDef="title">
+                <th scope="row" mat-header-cell *matHeaderCellDef>Approver</th>
+                <td mat-cell *matCellDef="let rule" (click)="expandedElement = expandedElement === rule ? null : rule">{{rule.title}}</td>
+            </ng-container>
 
-  <ng-container matColumnDef="attachment">
-    <th mat-header-cell *matHeaderCellDef>attachment(s) </th>
-    <td mat-cell *matCellDef="let x">{{x?.attachments.length}}</td>
-  </ng-container>
+            <ng-container matColumnDef="attachment">
+                <th scope="row" mat-header-cell *matHeaderCellDef>Attachment</th>
+                <td mat-cell *matCellDef="let rule">
+                    <div layout="row" style="display:flex;">
+                        <button mat-icon-button>
+                             <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                        <div>
+                            <label>drop here or click</label>
+                        </div>
+                        <div *ngIf="rule.attachments?.length > 0">
+                            <span class="latestFileName">{{rule.attachments[rule.attachments?.length - 1].fileName}}</span>
+                        </div>
+                    </div>
+                </td>
+            </ng-container>
 
-  <ng-container matColumnDef="note">
-    <th mat-header-cell *matHeaderCellDef>note </th>
-    <td mat-cell *matCellDef="let x">
-        <button mat-button (click)="expandedElement = expandedElement === x ? null : x">Show Log</button>
-    </td>
-  </ng-container>
+            <ng-container matColumnDef="attachments">
+                <th scope="row" mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let rule" (click)="expandedElement = expandedElement === rule ? null : rule">
+                <span class="material-icons primary-color">
+                  insert_drive_file
+                </span>
+                {{rule?.attachments?.length}}</td>
+            </ng-container>
 
-  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-  <ng-container matColumnDef="expandedDetail">
-    <td mat-cell *matCellDef="let x" [attr.colspan]="columnsToDisplay.length">
-        <div *ngFor="let y of x.attachments" class="element-detail"
-            [@detailExpand]="x === expandedElement ? 'expanded' : 'collapsed'">
-            {{y.fileName}} {{y.path}}
-        </div>
-    </td>
-  </ng-container>
+            <ng-container matColumnDef="note">
+                <th scope="row" mat-header-cell *matHeaderCellDef>NC Note</th>
+                <td mat-cell *matCellDef="let rule" (click)="expandedElement = expandedElement === rule ? null : rule">
+                    <button mat-button >Show Log</button>
+                </td>
+            </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"       
-      [class.expanded-row]="expandedElement === element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
-</table>
+            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let rule" [attr.colspan]="columnsToDisplay?.length">
+                    <div class="element-detail" [@detailExpand]="rule === expandedElement ? 'expanded' : 'collapsed'">
+                        <table aria-label="Attachments">
+                            <!-- <tr class="attachments">
+                                <th scope="row" *ngFor="let h of docsToDisplay">
+                                    {{h}}
+                                </th>
+                            </tr> -->
+                            <tr class="attachments" *ngFor="let attachment of rule.attachments" >
+                                <td>
+                                    <span matTooltip="View Attachment">{{ attachment.fileName }}</span>
+                                </td>
+                                <td>{{attachment.description}}</td>
+                                <td>{{attachment.uploadedByName}}</td>
+                                <td>{{attachment.uploadDate | date: 'short'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay" class="header-row"></tr>
+            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row" [class.expanded-row]="expandedElement === element"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+        </table>
 </mat-card>
