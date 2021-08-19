@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { animate, trigger, state, style, transition } from '@angular/animations';
 import { ContractRequestRule } from '../Models/ContractRequestRule.model';
 import { ContractRequestAttachment } from '../Models/ContractRequestAttachment.model';
+import { MarginDiffernce } from '../Models/MarginDifference.model';
 
 @Component({
   selector: 'app-Material-Table',
@@ -20,6 +21,7 @@ import { ContractRequestAttachment } from '../Models/ContractRequestAttachment.m
 })
 export class MaterialTableComponent implements OnInit {
   @Input() rules: ContractRequestRule[] = RULE_DATA;
+  @Input() marginChanges: MarginDiffernce[]  = MARGIN_DIFFERENCES;
   columnsToDisplay = [ 'review', 'ruleName', 'title', 'attachment', 'note'];
   expandedElement: ContractRequestAttachment[] | undefined;
   columnsToDisplay2 = ['name', 'weight', 'symbol', 'position'];
@@ -28,6 +30,10 @@ export class MaterialTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick() {
+    console.log(this.marginChanges, 'changes');
   }
 }
 
@@ -105,6 +111,15 @@ const RULE_DATA: ContractRequestRule[] = [
       }
     ]
   }
+]
+
+const MARGIN_DIFFERENCES: MarginDiffernce[] = [
+  { fieldName: "DentalVisionLife", canHaveEffectiveDate: true, previousMarginValue: "0.0000", currentMarginValue: "90.0000"},
+  { fieldName: "Insurance", canHaveEffectiveDate: false, previousMarginValue: "No", currentMarginValue: "Yes"},
+  { fieldName: "Medical", canHaveEffectiveDate: true, previousMarginValue: "0.0000", currentMarginValue: "90.0000"},
+  { fieldName: "OnCallPay", canHaveEffectiveDate: true, previousMarginValue: "5.1500", currentMarginValue: "4.0000"},
+  { fieldName: "WeeklyHousing", canHaveEffectiveDate: true, previousMarginValue: "1274.0000", currentMarginValue: "1163.0500", effectiveDate: new Date(2021, 7, 17, 17, 27, 20)},
+  { fieldName: "WeeklyTotal", canHaveEffectiveDate: false, previousMarginValue: "1736.0000", currentMarginValue: "1625.0500"}
 ]
 
 export interface PeriodicElement {

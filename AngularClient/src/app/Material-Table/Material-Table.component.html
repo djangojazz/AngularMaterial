@@ -58,16 +58,10 @@
                 </td>
             </ng-container>
 
-            <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
             <ng-container matColumnDef="expandedDetail">
                 <td mat-cell *matCellDef="let rule" [attr.colspan]="columnsToDisplay?.length">
                     <div class="element-detail" [@detailExpand]="rule === expandedElement ? 'expanded' : 'collapsed'">
                         <table aria-label="Attachments">
-                            <!-- <tr class="attachments">
-                                <th scope="row" *ngFor="let h of docsToDisplay">
-                                    {{h}}
-                                </th>
-                            </tr> -->
                             <tr class="attachments" *ngFor="let attachment of rule.attachments" >
                                 <td>
                                     <span matTooltip="View Attachment">{{ attachment.fileName }}</span>
@@ -85,4 +79,38 @@
             <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="element-row" [class.expanded-row]="expandedElement === element"></tr>
             <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
         </table>
+</mat-card>
+<mat-card>
+    <h3 class="aya-detail-label">Changes</h3>
+    <mat-table [dataSource]="marginChanges">
+        <ng-container matColumnDef="fieldName">
+            <mat-header-cell *matHeaderCellDef>Change</mat-header-cell>
+            <mat-cell *matCellDef="let x">{{x.fieldName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="previousMarginValue">
+            <mat-header-cell *matHeaderCellDef>Old Value</mat-header-cell>
+            <mat-cell *matCellDef="let x">{{x.previousMarginValue}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="currentMarginValue">
+            <mat-header-cell *matHeaderCellDef>New Value</mat-header-cell>
+            <mat-cell *matCellDef="let x">{{x.currentMarginValue}}</mat-cell>
+        </ng-container>
+        <!-- <ng-container matColumnDef="effectiveDate">
+            <mat-header-cell *matHeaderCellDef>Effective Date</mat-header-cell>
+            <mat-cell *matCellDef="let x">{{x.effectiveDate | date: 'short'}}</mat-cell>
+        </ng-container> -->
+        <ng-container matColumnDef="effectiveDate">
+            <mat-header-cell *matHeaderCellDef>Effective Date </mat-header-cell>
+            <mat-cell contenteditable=true *matCellDef="let x">
+                <input matInput [matDatepicker]="y" [(value)]="x.effectiveDate" name="empto" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="y"></mat-datepicker-toggle>
+                <mat-datepicker #y></mat-datepicker>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row class="header-row" *matHeaderRowDef="['fieldName', 'previousMarginValue', 'currentMarginValue', 'effectiveDate']"></mat-header-row>
+        <mat-row class="hover" *matRowDef="let row; columns: ['fieldName', 'previousMarginValue', 'currentMarginValue', 'effectiveDate']"></mat-row>
+    </mat-table>
+    <button mat-raised-button (click)="onClick()">
+        Results
+    </button>
 </mat-card>
