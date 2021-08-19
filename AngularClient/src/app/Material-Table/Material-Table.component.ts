@@ -35,6 +35,11 @@ export class MaterialTableComponent implements OnInit {
   onClick() {
     console.log(this.marginChanges, 'changes');
   }
+
+  OnDateChange(name: string, eventDate: Date) {
+    const margin: MarginDiffernce = this.marginChanges[this.marginChanges.findIndex(x => x.fieldName === name)];
+    margin.effectiveDate = eventDate;
+  }
 }
 
 export interface Doc {

@@ -102,7 +102,7 @@
         <ng-container matColumnDef="effectiveDate">
             <mat-header-cell *matHeaderCellDef>Effective Date </mat-header-cell>
             <mat-cell contenteditable=true *matCellDef="let x">
-                <input matInput [matDatepicker]="y" [(value)]="x.effectiveDate" name="empto" placeholder="Choose a date">
+                <input matInput [matDatepicker]="y" [value]="x.effectiveDate" name="empto" placeholder="Choose a date" (dateInput)="OnDateChange(x.fieldName, $event.value)">
                 <mat-datepicker-toggle matSuffix [for]="y"></mat-datepicker-toggle>
                 <mat-datepicker #y></mat-datepicker>
             </mat-cell>
