@@ -1,0 +1,64 @@
+<mat-card>
+  <h2 class="aya-detail-label">Changes</h2>
+  <table aria-label="ChangeLog Results" mat-table [dataSource]="marginChanges" multiTemplateDataRows>
+      <ng-container matColumnDef="groupId">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let x">
+            <div *ngIf="x.groupId">
+                <span class="material-icons" id="expand" matTooltip="Click to expand or collapse" (click)="expandedElement = expandedElement === x ? null : x">add</span>
+            </div>
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="fieldName">
+          <th mat-header-cell *matHeaderCellDef>Change</th>
+          <td mat-cell *matCellDef="let x">{{x.fieldName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="previousMarginValue">
+          <th mat-header-cell *matHeaderCellDef>Old Value</th>
+          <td mat-cell *matCellDef="let x">{{x.previousMarginValue}}</td>
+      </ng-container>
+      <ng-container matColumnDef="currentMarginValue">
+          <th mat-header-cell *matHeaderCellDef>New Value</th>
+          <td mat-cell *matCellDef="let x">{{x.currentMarginValue}}</td>
+      </ng-container>
+      <ng-container matColumnDef="effectiveDate">
+          <th mat-header-cell *matHeaderCellDef>Effective Date </th>
+          <td mat-cell contenteditable=true *matCellDef="let x">
+              <div *ngIf="x.canHaveEffectiveDate; else NA">
+                  <input matInput [matDatepicker]="y" [value]="x.effectiveDate" name="empto" placeholder="Choose a date" (dateInput)="OnDateChange(x.groupId, x.fieldName, $event.value)">
+                  <mat-datepicker-toggle matSuffix [for]="y"></mat-datepicker-toggle>
+                  <mat-datepicker #y></mat-datepicker>
+              </div>
+              <ng-template #NA>NA</ng-template>
+            </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let sub">
+              <div class="element-detail" [@detailExpand]="sub === expandedElement ? 'expanded' : 'collapsed'">
+                  <table aria-label="subFields">
+                      <tr *ngFor="let s of sub.subFields" >
+                          <td>{{s.fieldName}}</td>
+                          <td>{{s.previousMarginValue}}</td>
+                          <td>{{s.currentMarginValue}}</td>
+                          <div *ngIf="s.canHaveEffectiveDate; else NA">
+                              <input matInput [matDatepicker]="z" [value]="s.effectiveDate" name="empto" placeholder="Choose a date" (dateInput)="OnDateChange(s.groupId, s.fieldName, $event.value)">
+                              <mat-datepicker-toggle matSuffix [for]="z"></mat-datepicker-toggle>
+                              <mat-datepicker #z></mat-datepicker>
+                          </div>
+                          <ng-template #NA>NA</ng-template>
+                      </tr>
+                  </table>
+              </div>
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="fields"></tr>
+      <tr mat-row class="hover" *matRowDef="let element; columns: fields" [class.expanded-row]="expandedElement === element"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+  </table>
+  
+  <button mat-raised-button (click)="onClick()">
+      Results
+  </button>
+</mat-card>

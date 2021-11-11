@@ -1,0 +1,42 @@
+table {
+    width: 100%;
+    align-items: stretch;
+  }
+  
+tr.detail-row {
+    height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+    background: #f5f5f5;
+}
+
+.element-row td {
+    border-bottom-width: 0;
+}
+
+.element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+.column-groupId {
+    flex: 1;
+}
+
+.column-fieldName {
+    flex: 8;
+}
+.column-previousMarginValue {
+    flex: 9;
+}
+.column-currentMarginValue {
+    flex: 9;
+}
+.column-effectiveDate {
+    flex: 8;
+}
+
+#expand:hover {
+    color: blue;
+}

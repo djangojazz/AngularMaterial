@@ -10,21 +10,23 @@ import { TestService } from './test.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EntryHeaderComponent } from './Entry/entry-header/entry-header.component';
 import { MaterialTableComponent } from './Material-Table/Material-Table.component';
+import { ChangeLogComponent } from './ChangeLog/ChangeLog.component';
 
 @NgModule({
-  declarations: [				
-    AppComponent,
-    EntryComponent,
-    EntryHeaderComponent,
-    WelcomeComponent,
-      MaterialTableComponent
+  declarations: [					
+      AppComponent,
+      EntryComponent,
+      EntryHeaderComponent,
+      WelcomeComponent,
+      MaterialTableComponent,
+      ChangeLogComponent
    ],
   imports: [
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    MaterialModule,
-    HttpClientModule
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      BrowserModule,
+      MaterialModule,
+      HttpClientModule
   ],
   providers: [TestService],
   bootstrap: [AppComponent]
