@@ -59,7 +59,7 @@
             </ng-container>
 
             <ng-container matColumnDef="expandedDetail">
-                <td mat-cell *matCellDef="let rule" [attr.colspan]="columnsToDisplay?.length">
+                <td mat-cell *matCellDef="let rule" [attr.colspan]="columnsToDisplay.length">
                     <div class="element-detail" [@detailExpand]="rule === expandedElement ? 'expanded' : 'collapsed'">
                         <table aria-label="Attachments">
                             <tr class="attachments" *ngFor="let attachment of rule.attachments" >
