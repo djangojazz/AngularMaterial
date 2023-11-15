@@ -21,5 +21,17 @@
     <mat-icon>table</mat-icon>
     <a [routerLink]="['/changeLog']">Go to ChangeLog</a>
   </button>
+  <!-- <button mat-menu-item router>
+    <mat-icon>filter_alt</mat-icon>
+    <a [routerLink]="['/testinput', updateWord()]">Input</a>
+  </button> -->
+  
 </mat-menu>
+<mat-card>
+<mat-select>
+  <mat-option *ngFor="let x of selects" [routerLink]="['/testinput' , x]" [value]="x" >
+      {{x}}
+  </mat-option>
+</mat-select>
+</mat-card>
 <router-outlet></router-outlet>

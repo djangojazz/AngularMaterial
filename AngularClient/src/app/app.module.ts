@@ -11,15 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { EntryHeaderComponent } from './Entry/entry-header/entry-header.component';
 import { MaterialTableComponent } from './Material-Table/Material-Table.component';
 import { ChangeLogComponent } from './ChangeLog/ChangeLog.component';
+import { InputParameterComponent } from './InputParameter/InputParameter.component';
 
 @NgModule({
-  declarations: [					
+  declarations: [							
       AppComponent,
       EntryComponent,
       EntryHeaderComponent,
       WelcomeComponent,
       MaterialTableComponent,
-      ChangeLogComponent
+      ChangeLogComponent,
+      InputParameterComponent
    ],
   imports: [
       AppRoutingModule,

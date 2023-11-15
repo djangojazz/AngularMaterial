@@ -9,7 +9,11 @@ import { ContractRequestRule } from './Models/ContractRequestRule.model';
 export class AppComponent implements OnInit {
   title = 'AngularMaterial';
   rules: ContractRequestRule[] = [];
+  selects: string[] = ['select1', 'select2', 'selectagain'];
+  select = '';
 
   ngOnInit(): void {
   }
+
 }
+
