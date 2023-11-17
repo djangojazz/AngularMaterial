@@ -12,6 +12,7 @@ import { EntryHeaderComponent } from './Entry/entry-header/entry-header.componen
 import { MaterialTableComponent } from './Material-Table/Material-Table.component';
 import { ChangeLogComponent } from './ChangeLog/ChangeLog.component';
 import { InputParameterComponent } from './InputParameter/InputParameter.component';
+import { InputParameterSubComponent } from './InputParameter/InputParameter-sub/InputParameter-sub.component';
 
 @NgModule({
   declarations: [							
@@ -21,7 +22,8 @@ import { InputParameterComponent } from './InputParameter/InputParameter.compone
       WelcomeComponent,
       MaterialTableComponent,
       ChangeLogComponent,
-      InputParameterComponent
+      InputParameterComponent,
+      InputParameterSubComponent
    ],
   imports: [
       AppRoutingModule,

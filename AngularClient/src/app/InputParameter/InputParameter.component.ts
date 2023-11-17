@@ -6,12 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./InputParameter.component.css']
 })
 export class InputParameterComponent implements OnInit {
-  name: string = '';
+  selected: string = '';
   selects: string[] = ['select1', 'select2', 'selectagain'];
 
   constructor() { }
 
   ngOnInit() {
-    console.log('onInit', this.name);
+  }
+
+  Onselected(): string {
+    return this.selected;
   }
 }
