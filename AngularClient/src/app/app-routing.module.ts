@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'entry', component: EntryComponent },
   { path: 'materialTable', component: MaterialTableComponent },
   { path: 'changeLog', component: ChangeLogComponent },
-  { path: 'testinput/:name', component: InputParameterComponent },
+  { path: 'testinput', component: InputParameterComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'full' }
 ];
 

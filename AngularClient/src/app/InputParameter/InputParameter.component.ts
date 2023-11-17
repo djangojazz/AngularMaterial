@@ -8,11 +8,11 @@ import { ActivatedRoute, Route } from '@angular/router';
 })
 export class InputParameterComponent implements OnInit {
   name: string = '';
+  selects: string[] = ['select1', 'select2', 'selectagain'];
 
-  constructor(private _route: ActivatedRoute) { }
+  constructor() { }
 
   ngOnInit() {
-    this.name = this._route.snapshot.paramMap.get('name') || '';
     console.log('onInit', this.name);
   }
 }
