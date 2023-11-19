@@ -1,13 +1,13 @@
 <mat-card>
   <mat-card-content>
-  <mat-select [(value)]="selected">
-    <mat-option *ngFor="let x of selects" [value]="x">
-        {{x}}
+  <mat-select [(value)]="selectedItem">
+    <mat-option *ngFor="let x of items" [value]="x">
+        {{x.Service}}
     </mat-option>
   </mat-select>
 </mat-card-content>
 </mat-card>
 
 <div>
-  <app-InputParameter-sub [parameterName]="selected"></app-InputParameter-sub>
+  <app-InputParameter-sub [parameterName]="selected" [service]="selectedItem"></app-InputParameter-sub>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as Data from '../../assets/Services.json';
+import { ServiceModel } from '../Models/Service.model';
 
 @Component({
   selector: 'app-InputParameter',
@@ -8,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class InputParameterComponent implements OnInit {
   selected: string = '';
   selects: string[] = ['select1', 'select2', 'selectagain'];
+  items: ServiceModel[] = [];
+  selectedItem: ServiceModel = { Service: '', Dev: 0, QA: 0};
+  json = Data;
 
-  constructor() { }
+  constructor() { 
+      this.items = this.json.Services.map(x => ({Service: x.ServiceName, Dev: +x.Dev, QA: +x.QA}));
+  }
 
   ngOnInit() {
   }

@@ -1,0 +1,9 @@
+{
+	"DevServers": ["ls-sd-dapp01", "ls-sd-dapp02"],
+	"QAServers": ["ls-sd-qapp03", "ls-sd-qapp04"],
+	"Services": [
+		{"ServiceName":"Credit Bureau Service", "Dev": 31046, "QA": 32046 },
+		{"ServiceName":"Model Provider Service", "Dev": 31052, "QA": 32052 },
+		{"ServiceName":"Application Service (HTTPS)", "Dev": 31066, "QA": 32066 }
+	]
+}

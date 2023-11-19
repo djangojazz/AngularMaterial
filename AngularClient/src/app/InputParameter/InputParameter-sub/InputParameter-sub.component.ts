@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ServiceModel } from 'src/app/Models/Service.model';
 
 @Component({
   selector: 'app-InputParameter-sub',
@@ -6,13 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./InputParameter-sub.component.css']
 })
 export class InputParameterSubComponent implements OnInit {
-  @Input('parameterName') parameterName = '';
+    @Input('parameterName') parameterName = '';
+    @Input('service') service: ServiceModel = { Service: '', Dev: 0, QA: 0};
 
-  constructor() { 
-  }
+    constructor() { 
+    }
 
-  ngOnInit() {
-    console.log('parameterName', this.parameterName);
-  }
+    ngOnInit() {
+    }
 
 }
