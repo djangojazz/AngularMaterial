@@ -1,0 +1,29 @@
+<form [formGroup]="formEntry">
+
+  <mat-card>
+
+    <mat-card-header>
+      <h1>Text Output Test</h1>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <div>
+          <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input matInput placeholder="John" formControlName="firstName">
+          </mat-form-field>
+
+          <br/>
+
+          <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input matInput placeholder="Smith" formControlName="lastName">
+          </mat-form-field>
+
+          <br/>
+
+          <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</form>

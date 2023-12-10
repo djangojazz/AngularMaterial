@@ -13,9 +13,12 @@ import { MaterialTableComponent } from './Material-Table/Material-Table.componen
 import { ChangeLogComponent } from './ChangeLog/ChangeLog.component';
 import { InputParameterComponent } from './InputParameter/InputParameter.component';
 import { InputParameterSubComponent } from './InputParameter/InputParameter-sub/InputParameter-sub.component';
+import { RichTextOutputComponent } from './RichTextOutput/RichTextOutput.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
-  declarations: [							
+  declarations: [								
       AppComponent,
       EntryComponent,
       EntryHeaderComponent,
@@ -23,14 +26,16 @@ import { InputParameterSubComponent } from './InputParameter/InputParameter-sub/
       MaterialTableComponent,
       ChangeLogComponent,
       InputParameterComponent,
-      InputParameterSubComponent
+      InputParameterSubComponent,
+      RichTextOutputComponent,
    ],
   imports: [
       AppRoutingModule,
       BrowserAnimationsModule,
       BrowserModule,
       MaterialModule,
-      HttpClientModule
+      HttpClientModule,
+      ReactiveFormsModule
   ],
   providers: [TestService],
   bootstrap: [AppComponent]
